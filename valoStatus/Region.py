@@ -59,11 +59,10 @@ class Region:
             return
    
     def get_status(self):
-        json_data = self.requests()
-        if not json_data['incidents'] and not json_data['maintenances']:
-            return {'issue':False,'incidents':json_data['incidents'],'maintenances':json_data['maintenances']}
+        if not self.requests()['incidents'] and not self.requests()['maintenances']:
+            return {'issue':False,'incidents':self.requests()['incidents'],'maintenances':self.requests()['maintenances']}
         else:
-            return {'issue':True,'incidents':json_data['incidents'],'maintenances':json_data['maintenances']}
+            return {'issue':True,'incidents':self.requests()['incidents'],'maintenances':self.requests()['maintenances']}
     
     def get_status_issue(self):
         """
